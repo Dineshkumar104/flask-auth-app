@@ -60,7 +60,7 @@ def login():
             return render_template('register.html', alert_message="Email Not Registered or Check Password")
         else:
             session['email'] = email
-            return render_template('login.html')
+            return render_template('dashboard.html')
 
     return render_template('login.html')
 
@@ -68,5 +68,5 @@ def login():
 
     
 if __name__ == "__main__":
-    webbrowser.open("http://127.0.0.1:1000")  
-    app.run(port=1000)
+    app.run()
+

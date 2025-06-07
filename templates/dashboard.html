@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+
+  
+  font-family: "Poppins", sans-serif;
+}
+        body {
+        background-image: url('static/home.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+         margin: 0;
+         padding: 0;
+         color: #333;
+         height: 100vh;
+     }
+ 
+
+     .header {
+         background-color: #000; /* Black background */
+         color: #fff; /* White text */
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 20px 40px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     }
+ 
+     .header .logo {
+         font-size: 24px;
+         font-weight: bold;
+         color: #ff7b00; /* Highlighted logo text */
+         margin-left: -260px; /* Adds space between profile icon and logo */
+     }
+ 
+     .header .profile-icon {
+         font-size: 30px; /* Medium size for profile icon */
+         color: white;
+         margin-right: 10px; /* Adds space between icon and nav links */
+         cursor: pointer;
+     }
+ 
+     .header nav a {
+         text-decoration: none;
+         color: white;
+         margin: 0 15px;
+         font-size: 16px;
+         font-weight: bold;
+     }
+ 
+     .header .login-btn {
+         background-color: #ff7b00; /* Red button */
+         color: white;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 16px;
+     }
+ 
+     header a:hover {
+         text-decoration: underline;
+     }
+ 
+     @media (max-width: 768px) {
+         .header {
+             flex-direction: column;
+             align-items: flex-start;
+         }
+ 
+         .header .logo {
+             margin-left: 0; /* Adjust logo margin for smaller screens */
+         }
+     }
+     .intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    height: auto;
+}
+
+.glass-box {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgb(0 0 0 / 45%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.intro-text {
+    flex: 1;
+    color: #ffffff;
+}
+
+.intro-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.intro-text p {
+    font-size: 18px;
+    color: #f0f0f0;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.get-started-btn {
+    background-color: #ff7b00;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 10px rgba(255, 123, 0, 0.4);
+}
+
+.get-started-btn:hover {
+    background-color: #e76d00;
+}
+
+.intro-image {
+    flex: 1;
+    text-align: center;
+}
+
+.intro-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .glass-box {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .intro-text h1 {
+        font-size: 28px;
+    }
+
+    .intro-text p {
+        font-size: 16px;
+    }
+}
+
+.chatbot-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #ff7b00;
+    color: white;
+    font-size: 28px;
+    padding: 12px 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-icon:hover {
+    background-color: #e66c00;
+}
+
+.chat-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    max-height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #ff7b00;
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chat-body {
+    padding: 15px;
+    overflow-y: auto;
+    height: 360px;
+}
+
+.chatbox {
+    margin-bottom: 10px;
+}
+
+.userText, .botText {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.userText span {
+    background-color: #d1e7ff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.botText span {
+    background-color: #f0f0f0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.user-input {
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.user-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.user-input button {
+    background-color: #ff7b00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.user-input button:hover {
+    background-color: #e66c00;
+}
+.voice{
+    background-color: #ff7b00;
+    padding: 15px;
+    border-radius: 40px;
+    color: #000;
+}
+.chart-slider {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 400px;
+    max-width: 90%;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+    padding: 10px;
+    z-index: 1000;
+    animation: slideIn 0.4s ease-out;
+}
+
+.chart-slider img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.close-btn {
+    font-size: 20px;
+    float: right;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#" onclick="toggleProfileDetails()">
+            
+        </a>
+        
+        <div class="logo">Expenses Tracking</div>
+    
+        <nav>
+            <a href="expenses_details">Add Expenses Details</a>  
+            <a href="/ocr">OCR Scanning</a>
+            <a href="/month_expenses">Monthly Expense</a>
+            <a href="#" onclick="toggleChartSlider()">Monthly Chart</a>
+
+            </nav>
+        <a href="/">
+            <button class="login-btn">Logout</button>
+        </a>
+        <div class="chatbot-icon" onclick="toggleChatbot()">
+            💬
+        </div>
+        
+    </div>
+    <div id="chartSlider" class="chart-slider">
+        <span class="close-btn" onclick="toggleChartSlider()">✖</span>
+        <img src="static/uploads/expense_pie.png">
+    </div>
+    <script>
+        function toggleChartSlider() {
+            const chart = document.getElementById('chartSlider');
+            chart.style.display = (chart.style.display === 'block') ? 'none' : 'block';
+        }
+        </script>
+        
+
+    <section class="intro-section">
+        <div class="glass-box">
+            <div class="intro-text">
+                <h1>Take Control of Your Monthly Expenses</h1>
+                <p>
+                    Track your earnings and spending with ease using our smart expense tracking system.
+                    Get visual insights, manage your budget, and receive alerts when your spending exceeds safe limits.
+                    Save better, plan smarter, and take control of your financial future.
+                </p>
+                <a href="expenses_details">
+                    <button class="get-started-btn">Get Started</button>
+                </a>
+            </div>
+            <div class="intro-image">
+                <img src="static/home.jpg" alt="Expenses Tracking" />
+            </div>
+        </div>
+    </section>
+
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <span>Financial Chatbot</span>
+            <button onclick="toggleChatbot()">✖</button>
+        </div>
+        <!-- Insert your chatbot HTML here -->
+        <div class="chat-body">
+            <div id="chatbox" class="chatbox">
+                <p class="botText"><span>Hello I'm Your Financial Chatbot...</span></p>
+                <div class="speech">
+                    <p>{{speech}}</p>
+                </div>
+                <div class="result">
+                    <p>{{result}}</p>
+                </div>
+            </div>
+            <div class="user-input">
+                <input id="text" type="text" name="msg" placeholder="Start your chat here">
+                <button id="send" onclick="sendMessage()">Submit</button>
+                <a href="#" id="voiceBtn" class="voice"><i class="fa fa-microphone"></i></a>
+            </div>
+          
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+     <script>
+        // Check browser compatibility
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+    
+            // Trigger when speech is recognized
+            recognition.onresult = function (event) {
+                const voiceText = event.results[0][0].transcript;
+                document.getElementById("text").value = voiceText;
+                sendMessage(); // Automatically send the message
+            };
+    
+            recognition.onerror = function (event) {
+                console.error("Speech recognition error:", event.error);
+            };
+    
+            // Mic button click event
+            document.getElementById("voiceBtn").addEventListener("click", function (e) {
+                e.preventDefault();
+                recognition.start();
+            });
+    
+        } else {
+            console.warn("Speech Recognition not supported in this browser.");
+            document.getElementById("voiceBtn").style.display = "none";
+        }
+    </script>
+    
+
+
+    <script>
+        function toggleChatbot() {
+            var popup = document.getElementById("chatPopup");
+            popup.style.display = popup.style.display === "flex" ? "none" : "flex";
+        }
+    
+        function sendMessage() {
+        var rawText = $("#text").val().trim();
+        if (rawText === "") return; // Avoid empty messages
+
+        var userHtml = '<p class="userText">You: <span>' + rawText + "</span></p>";
+        $("#text").val("");
+        $("#chatbox").append(userHtml);
+
+        $(".chat-body").scrollTop($(".chat-body")[0].scrollHeight);
+
+        $.ajax({
+            data: { msg: rawText },
+            type: "POST",
+            url: "/get",
+            success: function (data) {
+                var botHtml = '<p class="botText">Chatbot: <span>' + data + "</span></p>";
+                $("#chatbox").append(botHtml);
+                $(".chat-body").scrollTop($(".chat-body")[0].scrollHeight);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $("#send").on("click", function () {
+            sendMessage();
+        });
+
+        $("#text").keypress(function (event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    });
+    </script>
+    
+</body>
+</html>  
