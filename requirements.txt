@@ -1,6 +1,5 @@
 flask
 gunicorn
-
 opencv-python==4.7.0.72
 pytesseract
 pyttsx3
@@ -11,5 +10,4 @@ speechrecognition
 gTTS
 googletrans==4.0.0-rc1
 numpy
-pickle
 scikit-learn
