@@ -18,7 +18,7 @@ import numpy as np
 import pickle
 import json
 import speech_recognition as sr
-
+nltk.download('punkt_tab')
 lemmatizer = WordNetLemmatizer()
 
 app = Flask(__name__)
