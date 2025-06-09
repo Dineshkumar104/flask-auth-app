@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Form</title>
+  
+  <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+
+  
+  font-family: "Poppins", sans-serif;
+}
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('static/expenses.jpg') repeat center center/cover;
+     
+    }
+
+    form {
+      background: #000000d1; /* Light black glass */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      color: white;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      margin-left: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 4px;
+      color: #f9ff00;
+    }
+
+    input {
+      width: calc(100% - 50px);
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    .field-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mic-btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .mic-btn:hover {
+      background: #388E3C;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #2196F3;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+      background: #1976D2;
+    }
+    .header {
+         background-color: #000; /* Black background */
+         color: #fff; /* White text */
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 20px 40px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     }
+ 
+     .header .logo {
+         font-size: 24px;
+         font-weight: bold;
+         color: #ff7b00; /* Highlighted logo text */
+         margin-left: -260px; /* Adds space between profile icon and logo */
+     }
+ 
+     .header .profile-icon {
+         font-size: 30px; /* Medium size for profile icon */
+         color: white;
+         margin-right: 10px; /* Adds space between icon and nav links */
+         cursor: pointer;
+     }
+ 
+     .header nav a {
+         text-decoration: none;
+         color: white;
+         margin: 0 15px;
+         font-size: 16px;
+         font-weight: bold;
+     }
+ 
+     .header .login-btn {
+         background-color: #ff7b00; /* Red button */
+         color: white;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 16px;
+     }
+ 
+     header a:hover {
+         text-decoration: underline;
+     }
+ 
+     @media (max-width: 768px) {
+         .header {
+             flex-direction: column;
+             align-items: flex-start;
+         }
+ 
+         .header .logo {
+             margin-left: 0; /* Adjust logo margin for smaller screens */
+         }
+     }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="#" onclick="toggleProfileDetails()">
+        
+    </a>
+    
+    <div class="logo">Expenses Tracking</div>
+
+    <nav>
+       <a href="/view_expenses">View Expenses Data</a>
+    </nav>
+    <a href="/dashboard">
+        <button class="login-btn">Logout</button>
+    </a>
+</div>
+  <form action="/expenses" method="post" id="expense-form">
+    <h2>🎙️ Expense Entry</h2>
+
+    <label for="month">Month</label>
+    <input type="month" id="month" name="month">
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="income">Income</label>
+        <input type="text" id="income" name="income" placeholder="eg.50000">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('income')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="emi">EMI</label>
+        <input type="text" id="emi" name="emi" placeholder="eg.15000">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('emi')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="groceries">Groceries</label>
+        <input type="text" id="groceries" name="groceries">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('groceries')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="utilities">Utility Bills (Electricity, Water, etc.)</label>
+        <input type="text" id="utilities" name="utilities">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('utilities')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="rent">House Rent</label>
+        <input type="text" id="rent" name="rent">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('rent')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="transport">Transport</label>
+        <input type="text" id="transport" name="transport">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('transport')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="shopping">Product Purchases / Shopping</label>
+        <input type="text" id="shopping" name="shopping">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('shopping')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="entertainment">Entertainment & Dining</label>
+        <input type="text" id="entertainment" name="entertainment">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('entertainment')">🎤</button>
+    </div>
+
+    <div class="field-group">
+      <div style="width: 100%;">
+        <label for="savings">Savings / Investments</label>
+        <input type="text" id="savings" name="savings">
+      </div>
+      <button type="button" class="mic-btn" onclick="startListening('savings')">🎤</button>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function startListening(fieldId) {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-IN';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript.replace(/[^\d.]/g, '');
+        document.getElementById(fieldId).value = transcript;
+      };
+
+      recognition.onerror = function(event) {
+        alert('Voice recognition error: ' + event.error);
+      };
+    }
+  </script>
+</body>
+</html>

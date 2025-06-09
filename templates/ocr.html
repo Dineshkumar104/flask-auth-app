@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Handwritten to Text Converter</title>
+    <style>
+                 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+
+  
+  font-family: "Poppins", sans-serif;
+}
+        body {
+            background-image: url('static/receipt.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            text-align: center;
+            margin: 0px;
+        }
+        .container {
+            background-color: #000000d4;
+            padding: 30px;
+            border-radius: 10px;
+            width: 35%;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-top: 150px;
+        }
+        .upload-form {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            font-size: 16px;
+            resize: none;
+        }
+        img {
+            max-width: 300px;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #b2ff00;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff5305;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .header {
+         background-color: #000; /* Black background */
+         color: #fff; /* White text */
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 20px 40px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     }
+ 
+     .header .logo {
+         font-size: 24px;
+         font-weight: bold;
+         color: #ff7b00; /* Highlighted logo text */
+         margin-left: -500px; /* Adds space between profile icon and logo */
+     }
+ 
+     .header .profile-icon {
+         font-size: 30px; /* Medium size for profile icon */
+         color: white;
+         margin-right: 10px; /* Adds space between icon and nav links */
+         cursor: pointer;
+     }
+ 
+     .header nav a {
+         text-decoration: none;
+         color: white;
+         margin: 0 15px;
+         font-size: 16px;
+         font-weight: bold;
+     }
+ 
+     .header .login-btn {
+         background-color: #ff7b00; /* Red button */
+         color: white;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 16px;
+     }
+ 
+     header a:hover {
+         text-decoration: underline;
+     }
+ 
+     @media (max-width: 768px) {
+         .header {
+             flex-direction: column;
+             align-items: flex-start;
+         }
+ 
+         .header .logo {
+             margin-left: 0; /* Adjust logo margin for smaller screens */
+         }
+     }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#" onclick="toggleProfileDetails()">
+            
+        </a>
+        
+        <div class="logo">Expenses Tracking</div>
+    
+        <nav>
+           
+        </nav>
+        <a href="/dashboard">
+            <button class="login-btn">Logout</button>
+        </a>
+    </div>
+    <div class="container">
+        <h1>Upload Your Receipt </h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="image" required>
+            <br><br>
+            <button type="submit">Process</button>
+        </form>
+
+        {% if uploaded_image %}
+        <h3>Uploaded Image:</h3>
+        <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}">
+        {% endif %}
+
+        <!-- {% if text %}
+        <h3>Extracted Text:</h3>
+        <textarea readonly>{{ text }}</textarea>
+        {% endif %}
+    </div> -->
+</body>
+</html>

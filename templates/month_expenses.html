@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Expenses</title>
+    <style>
+                  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+
+  
+  font-family: "Poppins", sans-serif;
+}
+        body {
+            background: url('static/month.jpg') repeat center center/cover;
+            margin: 0px;
+        }
+
+        table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 16px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #c33030;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #eafaf1;
+    transition: background-color 0.3s ease;
+}
+
+tbody td {
+    color: #333;
+}
+
+/* Responsive style (optional for mobile friendliness) */
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+        text-transform: capitalize;
+    }
+}
+
+        .header {
+         background-color: #000; /* Black background */
+         color: #fff; /* White text */
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 20px 40px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+ 
+     .header .logo {
+         font-size: 24px;
+         font-weight: bold;
+         color: #ff7b00; /* Highlighted logo text */
+         margin-left: -1000px; /* Adds space between profile icon and logo */
+     }
+ 
+     .header .profile-icon {
+         font-size: 30px; /* Medium size for profile icon */
+         color: white;
+         margin-right: 10px; /* Adds space between icon and nav links */
+         cursor: pointer;
+     }
+ 
+     .header nav a {
+         text-decoration: none;
+         color: white;
+         margin: 0 15px;
+         font-size: 16px;
+         font-weight: bold;
+     }
+ 
+     .header .login-btn {
+         background-color: #ff7b00; /* Red button */
+         color: white;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 16px;
+     }
+ 
+     header a:hover {
+         text-decoration: underline;
+     }
+ 
+     @media (max-width: 768px) {
+         .header {
+             flex-direction: column;
+             align-items: flex-start;
+         }
+ 
+         .header .logo {
+             margin-left: 0; /* Adjust logo margin for smaller screens */
+         }
+     }
+     h2{
+        text-align: center;
+        background-color: #333;
+        color: #ffee00;
+        width: 355px;
+        margin-left: 500px
+     }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="#" onclick="toggleProfileDetails()">
+            
+        </a>
+        
+        <div class="logo">Expenses Tracking</div>
+    
+        
+        <a href="/dashboard">
+            <button class="login-btn">Back</button>
+        </a>
+    </div>
+<h2>Your Monthly Expense Data</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Month</th>
+            <th>Income</th>
+            <th>EMI</th>
+            <th>Groceries</th>
+            <th>Utilities</th>
+            <th>Rent</th>
+            <th>Transport</th>
+            <th>Shopping</th>
+            <th>Entertainment</th>
+            <th>Savings</th>
+            <th>Receipt</th>
+
+            <th>Total Expense</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in expenses %}
+        <tr>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
